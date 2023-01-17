@@ -55,6 +55,7 @@ app.route(prefix + '/assignments/:id')
 app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
+  
 
   app.route(prefix + '/assignments').get(assignment.getAssignmentsPaginate);
   //app.get(prefix + '/assignments/:page/:limit', assignment.getAssignmentsPaginate);

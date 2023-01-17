@@ -13,10 +13,16 @@ export class AddAssignmentComponent implements OnInit {
   // du formulaire
   nomDevoir: string = '';
   dateDeRendu!: Date;
-
+  assignmentTest:Assignment=new Assignment;
+  matiereRendu:string[]=this.assignmentTest.listMatiere;
+  profList:string[]=this.assignmentTest.listProf;
+  prof:string="";
+  auteur:string;
   constructor(private assignmentsService:AssignmentsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   onSubmit() {
     console.log(this.nomDevoir + ' a rendre le ' + this.dateDeRendu);
@@ -27,11 +33,15 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.id = Math.floor(Math.random()*100000000);
 
 
+
     //this.assignments.push(newAssignment);
     //this.nouvelAssignment.emit(newAssignment);
     this.assignmentsService.addAssignment(newAssignment)
       .subscribe(reponse => {
         console.log(reponse.message);
       });
+  }
+  changeProf(event){
+    this.prof=this.profList[this.matiereRendu.indexOf(event.value)[0] ];
   }
 }
