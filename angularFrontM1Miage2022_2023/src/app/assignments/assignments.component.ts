@@ -34,12 +34,13 @@ export class AssignmentsComponent implements OnInit {
 
   onAssignmentClicke(assignment: Assignment) {
     this.assignmentSelectionne = assignment;
+    this.router.navigate(["/assignment/"+assignment.id]);
   }
 
   displayedColumns: string[] = ['nom', 'id'];
 
   ngOnInit(): void {
-    this.peuplerDB(); 
+    //this.peuplerDB(); 
     this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
       console.log(data.docs);
       this.assignments=data.docs;
