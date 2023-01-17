@@ -39,7 +39,6 @@ export class AssignmentsDetailsComponent implements OnInit {
       .updateAssignment(this.assignmentTransmis)
       .subscribe((message) => {
         console.log(message);
-        this.router.navigate(['/home']);
       });
   }
 
@@ -57,7 +56,14 @@ export class AssignmentsDetailsComponent implements OnInit {
     }
   }
 
-  isAdmin():boolean {
+  isUser():boolean {
     return this.authService.loggedIn;
+  }
+
+  isAdmin():boolean {
+    if (this.authService.userRole == "admin") {
+      return true;
+    }
+    return false;
   }
 }

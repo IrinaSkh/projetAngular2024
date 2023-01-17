@@ -35,7 +35,7 @@ const routes:Routes = [
   {path: '', component: AssignmentsComponent},
   {path: 'home', component: AssignmentsComponent},
   {path: 'add', component: AddAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin']} },
-  {path: 'assignments/edit/:id', component: EditAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin'] }},
+  {path: 'assignments/:id/edit', component: EditAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin'] }},
   {path: 'assignment/:id', component: AssignmentsDetailsComponent},
 ]
 @NgModule({
