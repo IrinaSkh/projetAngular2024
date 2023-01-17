@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { AssignmentsPaginatorComponent } from './assignments.paginator/assignments.paginator.component';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
@@ -13,11 +14,9 @@ import { MatTable } from '@angular/material/table';
 })
 export class AssignmentsComponent implements OnInit {
   titre = 'Mon application sur les assignments';
-
   assignments!: Assignment[];
 
   assignmentSelectionne!: Assignment;
-
   page:number=1;
   limit:number=10;
   totalDocs:number;
@@ -27,10 +26,9 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage:boolean;
   nextPage:number;
   @ViewChild('tableAssignments') matTableAssignments: MatTable<Assignment>;
-  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private assignmentsService: AssignmentsService, private router: Router) {}
-
+  constructor(private assignmentsService: AssignmentsService, private router: Router) {
+  }
 
   onAssignmentClicke(assignment: Assignment) {
     this.assignmentSelectionne = assignment;
@@ -40,7 +38,6 @@ export class AssignmentsComponent implements OnInit {
   displayedColumns: string[] = ['nom', 'dateRendu', 'matiere','rendu'];
 
   ngOnInit(): void {
-    //this.peuplerDB(); 
     this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
       console.log(data.docs);
       this.assignments=data.docs;
@@ -51,16 +48,7 @@ export class AssignmentsComponent implements OnInit {
       this.prevPage=data.prevPage;
       this.hasNextPage=data.hasNextPage;
       this.nextPage=data.nextPage;
-    })
-
-    //this.matTableAssignments.dataSource=new MatTableDataSource(this.assignments);
-    
-    // this.assignmentsService
-    //   .getAssignments()
-    //   .subscribe((tableauDesAssignmentsObservable) => {
-    //     this.assignments = tableauDesAssignmentsObservable;
-    //   });
-      //this.peuplerDB(); 
+    }) 
   }
   getAssignmentsPaginated(page: number, limit: number){
       this.assignmentsService.getAssignmentPagine(page,limit).subscribe(data=>{

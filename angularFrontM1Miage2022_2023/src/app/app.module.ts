@@ -20,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentsDetailsComponent } from './assignments/assignments-details/assignments-details.component';

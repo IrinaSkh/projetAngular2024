@@ -1,5 +1,11 @@
-<div>
-<form ngForm (submit)="onSubmit(); assignmentForm.reset()" #assignmentForm class="form">
+
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <p>Nouveau Assignement</p>
+    </mat-card-header>
+    <hr>
+<form class="container2" ngForm (submit)="onSubmit(); assignmentForm.reset()" #assignmentForm>
   <mat-form-field>
     <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
   </mat-form-field>
@@ -22,8 +28,9 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <button mat-stroked-button color="primary">
+  <button mat-stroked-button>
     Ajouter un devoir
   </button>
 </form>
+</mat-card>
 </div>

@@ -38,10 +38,17 @@ h1 {
 
 th {
   text-align: left;
+  font-size: 15px;
+  background-color:lightslategray;
+  color: white;
 }
 
 td {
   cursor: pointer;
+}
+
+th, td {
+  width: 25%;
 }
 
 .mat-row:hover {
@@ -50,4 +57,12 @@ td {
 
 .mat-paginator {
   margin-top: 20px;
+}
+
+.rendu-vert {
+  color: green;
+}
+
+.rendu-rouge {
+  color: red;
 }
