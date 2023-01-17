@@ -57,7 +57,10 @@ export class AssignmentsDetailsComponent implements OnInit {
   }
 
   isUser():boolean {
-    return this.authService.loggedIn;
+    if (this.authService.userRole == "admin" || this.authService.userRole == "user" ) {
+      return true;
+    }
+    return false;
   }
 
   isAdmin():boolean {

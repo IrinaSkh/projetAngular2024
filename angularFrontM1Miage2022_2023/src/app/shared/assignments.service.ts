@@ -57,13 +57,12 @@ export class AssignmentsService {
     return this.http.post<Assignment>(this.uri, assignment, this.HttpOptions);
   }
 
-  updateAssignment(assignment:Assignment):Observable<string> {
+  updateAssignment(assignment:Assignment):Observable<Assignment> {
     // On n'a besoin de rien faire pour le moment, puisque l'assignment est passé par référence
     // et que l'objet est modifié dans le tableau
     // Plus tard on utilisera un Web Service distant...
     this.logginService.log(assignment.nom, "modifié !");
-
-    return of("Assignment modifié");
+    return this.http.put<Assignment>(this.uri, assignment);
   }
 
   deleteAssignement(assignment:Assignment) :Observable<any> {
