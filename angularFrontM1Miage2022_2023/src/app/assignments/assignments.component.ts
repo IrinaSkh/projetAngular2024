@@ -37,7 +37,7 @@ export class AssignmentsComponent implements OnInit {
     this.router.navigate(["/assignment/"+assignment.id]);
   }
 
-  displayedColumns: string[] = ['nom', 'id'];
+  displayedColumns: string[] = ['nom', 'dateRendu', 'matiere','rendu'];
 
   ngOnInit(): void {
     //this.peuplerDB(); 

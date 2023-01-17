@@ -24,4 +24,24 @@
   animation: blur-animation 2s ease-in-out;
 }
 
+.demo-table {
+  width: 100%;
+}
+.mat-row:hover {
+  cursor: pointer;
+  background-blend-mode: hard-light;
 
+}
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
