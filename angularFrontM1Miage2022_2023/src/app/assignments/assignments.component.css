@@ -13,6 +13,11 @@ table {
   justify-content: flex-end;
 }
 
+.container3 {
+  display: flex;
+  justify-content: flex-start;
+}
+
 @keyframes blur-animation {
   from {
     filter: blur(5px);

@@ -91,4 +91,11 @@ export class AssignmentsComponent implements OnInit {
       //this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
+  search(value: string) {
+    this.assignments = this.assignments.filter(
+      assignment => assignment.nom.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+}
+
+
 }
