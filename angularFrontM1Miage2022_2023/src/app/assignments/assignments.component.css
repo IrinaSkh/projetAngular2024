@@ -2,6 +2,26 @@
   display:flex;
   flex-direction: column;
 }
-.AjouterBtn {
-  align-self: flex-end;
+.container2 {
+  align-self:center;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
+
+@keyframes blur-animation {
+  from {
+    filter: blur(5px);
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+
+.button {
+  background-color: green;
+  color: white;
+  font-size: 17px;
+  animation: blur-animation 2s ease-in-out;
+}
+
+

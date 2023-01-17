@@ -8,7 +8,7 @@ import { AuthService } from './shared/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Application de gestion des assignments !!!';
+  title = 'Application de gestion des Assignments';
   identifiant: string;
   motdepasse: string;
 

@@ -12,11 +12,11 @@
   <p *ngIf="authService.loggedIn" class="text">Connecté en tant que {{authService.userName}} ({{authService.userRole}})</p>
   <button (click)="logout()" *ngIf="authService.loggedIn" class="button2">Déconnexion</button>
 </div>
-<h1>
-  <nav>
-    <a routerLink="/home">{{title}}</a>
-  </nav>
-</h1>
+<div class="container2">
+  <h1>
+    <p>{{title}}</p>
+  </h1>
+</div>
 <router-outlet>
   
 </router-outlet>
