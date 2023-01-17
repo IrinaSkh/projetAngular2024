@@ -56,7 +56,7 @@ app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
 
-app.route(prefix+'/assignments/page=:page&limit=:limit').get(assignment.getAssignmentsPaginate);
+//app.route(prefix+'/assignments/page=:page&limit=:limit').get(assignment.getAssignmentsPaginate);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");

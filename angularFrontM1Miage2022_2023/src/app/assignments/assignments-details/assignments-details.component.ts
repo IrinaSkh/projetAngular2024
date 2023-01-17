@@ -44,6 +44,7 @@ export class AssignmentsDetailsComponent implements OnInit {
   }
 
   onDelete() {
+    if (this.authService.getUserRole() == "admin") {
     if (!this.assignmentTransmis) return;
 
     this.assignmentService
@@ -53,6 +54,7 @@ export class AssignmentsDetailsComponent implements OnInit {
         this.assignmentTransmis = undefined;
         this.router.navigate(['/home']);
       });
+    }
   }
 
   isAdmin():boolean {

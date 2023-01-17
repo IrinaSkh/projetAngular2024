@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentsDetailsComponent } from './assignments/assignments-details/assignments-details.component';
@@ -29,13 +30,9 @@ import { AssignmentsPaginatorComponent } from './assignments/assignments.paginat
 const routes:Routes = [
   {path: '', component: AssignmentsComponent},
   {path: 'home', component: AssignmentsComponent},
-  {path: 'add', component: AddAssignmentComponent},
+  {path: 'add', component: AddAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin']} },
+  {path: 'assignments/edit/:id', component: EditAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin'] }},
   {path: 'assignment/:id', component: AssignmentsDetailsComponent},
-  {
-    path: 'assignment/:id/edit',
-    component: EditAssignmentComponent,
-    canActivate: [AuthGuard]
-  }
 ]
 @NgModule({
   declarations: [
@@ -52,7 +49,7 @@ const routes:Routes = [
     MatButtonModule, MatIconModule, MatDividerModule,
     MatInputModule, MatFormFieldModule,
     MatDatepickerModule, MatNativeDateModule, MatListModule,
-    MatCardModule, MatCheckboxModule, MatSlideToggleModule,
+    MatCardModule, MatCheckboxModule, MatSlideToggleModule, MatToolbarModule,
     FormsModule, HttpClientModule,
     RouterModule.forRoot(routes)
   ],

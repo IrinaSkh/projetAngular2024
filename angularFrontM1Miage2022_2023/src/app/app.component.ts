@@ -9,16 +9,19 @@ import { AuthService } from './shared/auth.service';
 })
 export class AppComponent {
   title = 'Application de gestion des assignments !!!';
+  identifiant: string;
+  motdepasse: string;
 
-  constructor(private authService:AuthService, private router:Router) {}
+  constructor(public authService:AuthService, private router:Router) {}
 
   login() {
-    if(!this.authService.loggedIn) {
-      this.authService.logIn();
-    } else {
-      this.authService.logOut();
-      this.router.navigate(['/home']);
-
-    }
+      this.authService.logIn(this.identifiant, this.motdepasse);
+      this.authService.loggedIn = true;
   }
+
+  logout() {
+    this.authService.logOut();
+    this.router.navigate(['/home']);
+    this.authService.loggedIn = false;
+}
 }

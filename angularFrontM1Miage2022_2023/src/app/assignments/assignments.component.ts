@@ -26,7 +26,7 @@ export class AssignmentsComponent implements OnInit {
   constructor(private assignmentsService: AssignmentsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
+    /*this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
       this.assignments=data.docs;
       this.page=data.page;
       this.limit=data.limit;
@@ -35,12 +35,12 @@ export class AssignmentsComponent implements OnInit {
       this.prevPage=data.prevPage;
       this.hasNextPage=data.hasNextPage;
       this.nextPage=data.nextPage;
-    })
-    // this.assignmentsService
-    //   .getAssignments()
-    //   .subscribe((tableauDesAssignmentsObservable) => {
-    //     this.assignments = tableauDesAssignmentsObservable;
-    //   });
+    })*/
+     this.assignmentsService
+       .getAssignments()
+       .subscribe((tableauDesAssignmentsObservable) => {
+         this.assignments = tableauDesAssignmentsObservable;
+      });
       //this.peuplerDB(); 
   }
 

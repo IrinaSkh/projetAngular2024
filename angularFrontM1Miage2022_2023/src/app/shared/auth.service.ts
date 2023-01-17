@@ -5,22 +5,38 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   loggedIn=false;
+  public userRole: string;
+  public userName: string;
+  private users = [    
+    { identifiant: 'Damien', motdepasse: 'mienda', role: 'user' },
+    { identifiant: 'Irina', motdepasse: 'inair', role: 'user' },
+    { identifiant: 'Admin', motdepasse: '1234', role: 'admin' },
+  ];
+  constructor() {}
 
-  constructor() { }
-
-  logIn() {
-    this.loggedIn = true;
+  logIn(identifiant: string, motdepasse: string): Promise<string> {
+    // Vérifiez les informations de connexion et définissez le rôle de l'utilisateur ici
+    return new Promise((resolve) => {
+      const user = this.users.find(u => u.identifiant === identifiant && u.motdepasse === motdepasse);
+      if (user) {
+        this.userRole = user.role;
+        this.userName = user.identifiant;
+        resolve(user.role);
+        //this.loggedIn = true;
+      } else {
+        resolve('');
+      }
+    });
   }
 
   logOut() {
+    this.userRole = '';
+    this.userName = 'Non enregistré';
     this.loggedIn = false;
   }
 
-  // renvoie une promesse qui est résolue si l'utilisateur est loggué
-  isAdmin() {
-    const isUserAdmin = new Promise((resolve, reject) => {
-      resolve(this.loggedIn);
-    });
-    return isUserAdmin;
+  getUserRole(): string {
+    return this.userRole;
   }
+
 }
