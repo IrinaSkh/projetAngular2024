@@ -44,8 +44,8 @@ let port = process.env.PORT || 8010;
 // les routes
 const prefix = '/api';
 
-app.route(prefix + '/assignments')
-  .get(assignment.getAssignments);
+// app.route(prefix + '/assignments')
+//   .get(assignment.getAssignments);
 
 app.route(prefix + '/assignments/:id')
   .get(assignment.getAssignment)
@@ -56,7 +56,8 @@ app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
 
-//app.route(prefix+'/assignments/page=:page&limit=:limit').get(assignment.getAssignmentsPaginate);
+  app.route(prefix + '/assignments').get(assignment.getAssignmentsPaginate);
+  //app.get(prefix + '/assignments/:page/:limit', assignment.getAssignmentsPaginate);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
