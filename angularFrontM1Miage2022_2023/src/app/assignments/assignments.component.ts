@@ -39,6 +39,7 @@ export class AssignmentsComponent implements OnInit {
   displayedColumns: string[] = ['nom', 'id'];
 
   ngOnInit(): void {
+    this.peuplerDB(); 
     this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
       console.log(data.docs);
       this.assignments=data.docs;
