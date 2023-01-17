@@ -16,6 +16,7 @@ export class AddAssignmentComponent implements OnInit {
   assignmentTest:Assignment=new Assignment;
   matiereRendu:string[]=this.assignmentTest.listMatiere;
   profList:string[]=this.assignmentTest.listProf;
+  matiere:string;
   prof:string="";
   auteur:string;
   constructor(private assignmentsService:AssignmentsService) {}
@@ -30,6 +31,7 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.nom = this.nomDevoir;
     newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
+    newAssignment.matiere=this.matiere;
     newAssignment.id = Math.floor(Math.random()*100000000);
 
 
@@ -42,6 +44,7 @@ export class AddAssignmentComponent implements OnInit {
       });
   }
   changeProf(event){
+    this.matiere=event.value;
     this.prof=this.profList[this.matiereRendu.indexOf(event.value)[0] ];
   }
 }

@@ -11,15 +11,15 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Matière du rendu</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let matiere of matiereRendu" (onSelectionChange)="changeProf($event)" [value]="matiere">
+    <mat-select [(ngModel)]="matiere">
+      <mat-option *ngFor="let matiere of matiereRendu" (onSelectionChange)="changeProf($event)"   >
         {{matiere}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field  class="example-full-width">
     <mat-label>Professeur</mat-label>
-    <input disabled="true" matInput placeholder="M. Buffa" value="{{prof}}">
+    <input disabled="true" matInput placeholder="M. Buffa" [(ngModel)]="prof" value="{{prof}}">
   </mat-form-field>
 
   <mat-form-field appearance="fill">

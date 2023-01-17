@@ -75,7 +75,7 @@ export class AssignmentsComponent implements OnInit {
   onPageChanged($event:PageEvent){
 
     this.getAssignmentsPaginated($event.pageIndex, $event.pageSize);
-    this.matTableAssignments.dataSource=this.assignments;
+    //this.matTableAssignments.dataSource=this.assignments;
   }
   // ngAfterViewInit() {
   //   this.matTableAssignments.dataSource= this.sort;
