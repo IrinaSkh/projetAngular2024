@@ -4,3 +4,34 @@
 .nonRendu{
     color:green
 }
+/* .form{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+} */
+.container2{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.ajouterBtn{
+    align-self: flex-end;
+}
+/* dashboard.component.css or dashboard.component.scss */
+.fixed-toolbar {
+    position:sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+
+  .content {
+    flex: 1;
+    padding: 16px;
+  }
+    

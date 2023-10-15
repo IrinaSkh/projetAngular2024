@@ -15,8 +15,26 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import {MatCardModule} from '@angular/material/card'
+import { MatNativeDateModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AssignmentDetailComponent } from './test-component/assignment-detail/assignment-detail.component';
+import {MatListModule} from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AddAssignmentComponent } from './test-component/add-assignment/add-assignment.component';
+import { MatToolbarModule } from '@angular/material/toolbar'; // Import the MatToolbarModule
+import { MatSidenavModule } from '@angular/material/sidenav'; // Import the MatSidenavModule
+
+import {Routes, RouterModule} from '@angular/router';
+import { EditAssignmentComponent } from './test-component/edit-assignment/edit-assignment.component'
 
 
+const routes: Routes=[
+  {path:'', component:TestComponentComponent},
+  {path:'home', component:TestComponentComponent},
+  {path:'add', component:AddAssignmentComponent},
+  {path:'assignment/:id', component:AssignmentDetailComponent}
+]
 // import {Component} from '@angular/core';
 
 // /**
@@ -33,7 +51,11 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
   declarations: [
     AppComponent,
     TestComponentComponent,
-    RenduDirective
+    RenduDirective,
+    AssignmentDetailComponent,
+    AddAssignmentComponent,
+    EditAssignmentComponent
+
     //MatFormFieldModule,
     //MatInputModule
     
@@ -49,7 +71,17 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     FormsModule,
     //MatFormField,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    RouterModule.forRoot(routes)
 
   ],
   providers: [],

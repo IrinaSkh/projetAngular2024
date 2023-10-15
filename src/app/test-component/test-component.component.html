@@ -1,6 +1,72 @@
-<p>test-component works!</p>
-<p>Titre = {{titre}}</p>
-<form ngForm (submit)="onSubmit($event)" #assignmentForm>
+
+<mat-toolbar color="primary" class="fixed-toolbar">
+    <button mat-icon-button (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/home">
+        <mat-icon>home</mat-icon>
+      </button>
+    <span class="spacer"></span>
+    
+    Application de gestion de rendus
+  </mat-toolbar>
+  
+  <mat-drawer-container>
+    <mat-drawer position="start" #drawer mode="over">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/liste-devoirs">Liste des devoirs</a>
+        <a mat-list-item routerLink="/add">Ajout d'un devoir</a>
+        <a mat-list-item routerLink="/modification-devoir">Modification d'un devoir</a>
+        <a mat-list-item routerLink="/suppression-devoir">Suppression d'un devoir</a>
+        <a mat-list-item routerLink="/generation-donnees-test">Génération de données de test</a>
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <div class="main-content">
+        <div class="container2" >
+            <!-- <button class="ajouterBtn" mat-flat-button color="accent" (click)="onAddAssignmentBtnClick()">Ajouter Assignment</button> -->
+            <div class="ajouterBtn">
+                <a routerLink="/add">
+                    <button class="ajouterBtn" mat-flat-button color="accent" (click)="onAddAssignmentBtnClick()">
+                        Ajouter Assignment  
+                    </button>
+                </a>
+            </div>
+            <div *ngFor="let assignement of assignments"
+                [ngStyle]="{'color': assignement.rendu ? 'green' : 'red'}">
+        
+            <mat-list id="test" *ngFor="let assignment of assignments">
+                <nav><a routerLink="/assignment/{{assignment.id}}">
+                <h3 mat-subheader> 
+                        {{assignment.dateDeRendu | date}}
+                </h3>
+                <mat-list-item (click)="assignmentClick(assignment)">
+                    <p appRendu *ngIf="assignment.rendu; else nonsoumis">
+                        Devoir intitulé {{assignment.nom}} a été rendu.
+                    </p>
+                    <ng-template #nonsoumis>
+                        Le devoir {{assignment.nom}} n'a pas été rendu.
+                    </ng-template>
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </a> </nav>
+            </mat-list>
+        </div>
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+  </mat-drawer-container>
+  
+
+
+<!-- <app-add-assignment (nouvelAssignment)="onNouvelAssignment($event)" *ngIf="formVisible"></app-add-assignment> -->
+
+
+<!-- <app-assignment-detail *ngIf="formVisible" [assignmentTransit]="assignmentSelectionne"></app-assignment-detail> -->
+
+
+<!-- assignmentForm.reset() -->
+<!-- <form ngForm (submit)="onSubmit($event)" #assignmentForm  class="form">
     <mat-form-field>
         <input placeholder="Nom du devoir" required matInput #nomAssignment [(ngModel)]="nomDevoir" name="nom">
     </mat-form-field>
@@ -8,22 +74,13 @@
     <mat-form-field appareance="fill">
         <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateDeRendu" name="date" required>
             <mat-datepicker-toogle matSuffix [for]="picker"></mat-datepicker-toogle></mat-form-field>
-    <mat-datepicker #picker></mat-datepicker>
+   <mat-datepicker #picker></mat-datepicker> 
     <button mat-stroked-button 
            color="primary" [disabled]="!ajoutActive" (click)="onSubmit(nomAssignment.value)">
       Ajouter un devoir
     </button>
-</form>
-
-<!-- <p appRendu *ngFor="let assignement of assignements" [ngClass]="{'rendu':assignement.bol, 'nonRendu': !assignement.bol}"
->
-    {{assignement.nom}} {{assignement.date}} {{assignement.rendu}}  {{assignement.bol}}
-    
-</p>
-<div *ngFor="let assignement of assignements"
-    [ngStyle]="{'color': assignement.rendu ? 'green' : 'red'}"
-> -->
-<div *ngFor="let assignment of assignments">
+</form> -->
+<!-- <div *ngFor="let assignment of assignments">
     <p appRendu *ngIf="assignment.rendu; else nonsoumis">
         Devoir intitulé {{assignment.nom}}, rendu le {{assignment.dateDeRendu}}, sousmis par l'élève {{assignment.rendu}}
     </p>
@@ -32,6 +89,8 @@
     </ng-template>
  
 
-</div>
-
-
+</div> -->
+    <!-- <p appRendu *ngFor="let assignement of assignments" [ngClass]="{'rendu':assignement.rendu, 'nonRendu': !assignement.rendu}">
+        {{assignement.nom}} {{assignement.dateDeRendu | date}} {{assignement.rendu}}  
+        
+    </p> -->
