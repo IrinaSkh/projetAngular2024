@@ -11,7 +11,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { TestComponentComponent } from './test-component/test-component.component';
 import { RenduDirective } from './shared/rendu.directive';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDatepickerModule } from "@angular/material/datepicker";
@@ -26,14 +26,19 @@ import { MatToolbarModule } from '@angular/material/toolbar'; // Import the MatT
 import { MatSidenavModule } from '@angular/material/sidenav'; // Import the MatSidenavModule
 
 import {Routes, RouterModule} from '@angular/router';
-import { EditAssignmentComponent } from './test-component/edit-assignment/edit-assignment.component'
+import { EditAssignmentComponent } from './test-component/edit-assignment/edit-assignment.component';
+import {LoginComponent} from "./test-component/login/login.component";
+import {MatDialogModule} from "@angular/material/dialog";
+
 
 
 const routes: Routes=[
   {path:'', component:TestComponentComponent},
   {path:'home', component:TestComponentComponent},
   {path:'add', component:AddAssignmentComponent},
-  {path:'assignment/:id', component:AssignmentDetailComponent}
+  {path:'assignment/:id', component:AssignmentDetailComponent},
+  {path:'assignment/:id/edit', component:EditAssignmentComponent},
+
 ]
 // import {Component} from '@angular/core';
 
@@ -54,15 +59,18 @@ const routes: Routes=[
     RenduDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    LoginComponent
+
 
     //MatFormFieldModule,
     //MatInputModule
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatDialogModule,
     //BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
@@ -81,6 +89,7 @@ const routes: Routes=[
     MatCheckboxModule,
     MatToolbarModule,
     MatSidenavModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
 
   ],

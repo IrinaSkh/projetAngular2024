@@ -1,0 +1,12 @@
+<!-- login.component.html -->
+<h2>Formulaire de Connexion</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput formControlName="username" placeholder="Nom d'utilisateur" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="password" type="password" placeholder="Mot de passe" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Se connecter</button>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+</form>

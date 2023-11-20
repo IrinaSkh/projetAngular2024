@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './test-component.model';
-
+import {MatDialog} from "@angular/material/dialog";
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-test-component',
@@ -20,7 +21,7 @@ export class TestComponentComponent implements OnInit {
   assignmentSelectionne:Assignment;
   formVisible=false;
   assignments:Assignment[];
-  constructor(private assignmentService: AssignmentsService ) {}
+  constructor(private assignmentService: AssignmentsService, public dialog: MatDialog ) {}
   //nomDevoir:string="";
   ngOnInit(): void {
     //this.assignments=this.assignmentService.getAssignments();
@@ -56,6 +57,16 @@ export class TestComponentComponent implements OnInit {
   toggleDrawer() {
     console.log("boutton")
     this.drawer.toggle();
+  }
+  openLoginForm(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px', // ajustez la largeur selon vos besoins
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('La fenêtre de connexion a été fermée.');
+      // Traitez le résultat si nécessaire
+    });
   }
 
 

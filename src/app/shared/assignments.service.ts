@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Assignment } from '../test-component/test-component.model';
 import { Observable, of } from 'rxjs';
 import { LoggingService } from './logging.service';
+import { Router}  from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class AssignmentsService {
 
     }
   ];
-  constructor(private loggingService:LoggingService) { }
+  constructor(private loggingService:LoggingService, private  router: Router) { }
 
   // getAssignments(): Assignment[]{
   //   return this.assignments;
@@ -53,6 +54,7 @@ export class AssignmentsService {
   deleteAssignment(assignment:Assignment):Observable<string>{
     let pos=this.assignments.indexOf(assignment);
     this.assignments.slice(pos,1);
+    this.router.navigate(["/home"]);
     return of("Assignment service : assignemnt supprimé");
   }
   getAssignment(id:number):Observable<Assignment| undefined>{
