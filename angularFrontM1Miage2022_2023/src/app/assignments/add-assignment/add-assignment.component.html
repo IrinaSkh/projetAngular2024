@@ -11,8 +11,8 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Matière du rendu</mat-label>
-    <mat-select [(ngModel)]="matiere">
-      <mat-option *ngFor="let matiere of matiereRendu" (onSelectionChange)="changeProf($event)"   >
+    <mat-select  [(ngModel)]="matiere">
+      <mat-option *ngFor="let matiere of matiereRendu"  (selectionChange)="changeProf($event)" [value]="matiere" >
         {{matiere}}
       </mat-option>
     </mat-select>

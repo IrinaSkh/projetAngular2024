@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
 
@@ -32,6 +33,7 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.dateDeRendu = this.dateDeRendu;
     newAssignment.rendu = false;
     newAssignment.matiere=this.matiere;
+    newAssignment.prof=this.prof;
     newAssignment.id = Math.floor(Math.random()*100000000);
 
 
@@ -44,7 +46,8 @@ export class AddAssignmentComponent implements OnInit {
       });
   }
   changeProf(event){
-    this.matiere=event.value;
+    //this.matiere=event.value;
+    console.log("testtttgegcec");
     this.prof=this.profList[this.matiereRendu.indexOf(event.value)[0] ];
   }
 }
