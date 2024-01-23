@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
-
+import { MatStepperModule } from '@angular/material/stepper';
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
@@ -36,10 +36,6 @@ export class AddAssignmentComponent implements OnInit {
     newAssignment.prof=this.prof;
     newAssignment.id = Math.floor(Math.random()*100000000);
 
-
-
-    //this.assignments.push(newAssignment);
-    //this.nouvelAssignment.emit(newAssignment);
     this.assignmentsService.addAssignment(newAssignment)
       .subscribe(reponse => {
         console.log(reponse.message);
@@ -49,5 +45,14 @@ export class AddAssignmentComponent implements OnInit {
     //this.matiere=event.value;
     console.log("testtttgegcec");
     this.prof=this.profList[this.matiereRendu.indexOf(event.value)[0] ];
+  }
+  onStepOneSubmit() {
+  }
+  onStepTwoSubmit() {
+    // Logique pour la soumission de la deuxième étape
+  }
+
+  onStepThreeSubmit() {
+    // Logique pour la soumission de la troisième étape
   }
 }

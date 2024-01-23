@@ -1,5 +1,6 @@
 export class Assignment
 {
+
   listMatiere:string[]=["Base de données", "Technologies Web", "Grails","Programmation orientée Objet", "Anglais"];
   listProf:string[]=["prog0.png","prof1.png", "prof2.png","prof3.png", "prof4.png"];
   _id!:string;
@@ -34,6 +35,8 @@ export class Assignment
       }
     }
   }
+
+
 }
 
 

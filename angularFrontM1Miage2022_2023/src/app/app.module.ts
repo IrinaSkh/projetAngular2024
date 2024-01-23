@@ -31,6 +31,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assignment.component';
 import { AuthGuard } from './shared/auth.guard';
 import { AssignmentsPaginatorComponent } from './assignments/assignments.paginator/assignments.paginator.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatStepperModule} from "@angular/material/stepper";
 
 const routes:Routes = [
   {path: '', component: AssignmentsComponent},
@@ -41,6 +43,7 @@ const routes:Routes = [
 ]
 @NgModule({
   declarations: [
+
     AppComponent,
     AssignmentsComponent, AssignmentsDetailsComponent,
     RenduDirective,
@@ -49,6 +52,8 @@ const routes:Routes = [
     AssignmentsPaginatorComponent,
   ],
   imports: [
+    MatStepperModule,
+    MatSidenavModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule, MatIconModule, MatDividerModule,
