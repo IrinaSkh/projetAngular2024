@@ -1,41 +1,25 @@
 let Assignment = require('../model/assignment');
-let assignmentsData = [
-    { id: 1, dateDeRendu: new Date('2024-02-01'), nom: 'Assignment 1', rendu: false, auteur: 'Alice', matiere: 'Math', prof: 'Prof A', note: 0, remarque: '' },
-    { id: 2, dateDeRendu: new Date('2024-02-05'), nom: 'Assignment 2', rendu: false, auteur: 'Bob', matiere: 'Science', prof: 'Prof B', note: 0, remarque: '' },
-    // ... Add more assignments here
-    { id: 10, dateDeRendu: new Date('2024-02-20'), nom: 'Assignment 10', rendu: false, auteur: 'Jean', matiere: 'Histoire', prof: 'Prof J', note: 0, remarque: '' }
-];
-
 
 // Récupérer tous les assignments (GET)
-function getAssignments(req, res){
-    // assignmentsData.filter((err, assignments) => {
-    //     if(err){
-    //         res.send(err)
-    //     }
-    //
-    //     res.send(assignments);
-    // }
-    console.log("je suis dans la fonction getAssignments")
-    console.log(assignmentsData)
-    res.send(assignmentsData);
-    //.json(assignmentsData);
-}
+// function getAssignments(req, res){
+//     Assignment.find((err, assignments) => {
+//         if(err){
+//             res.send(err)
+//         }
+
+//         res.send(assignments);
+//     });
+// }
 
 // Récupérer un assignment par son id (GET)
-// Récupérer un assignment par son id (GET)
-function getAssignment(req, res) {
+function getAssignment(req, res){
     let assignmentId = req.params.id;
 
-    let assignment = assignmentsData.find(a => a.id === parseInt(assignmentId));
-
-    if (!assignment) {
-        res.status(404).json({ message: 'Assignment not found' });
-    } else {
+    Assignment.findOne({id: assignmentId}, (err, assignment) =>{
+        if(err){res.send(err)}
         res.json(assignment);
-    }
+    })
 }
-
 
 // Ajout d'un assignment (POST)
 function postAssignment(req, res){
@@ -51,13 +35,13 @@ function postAssignment(req, res){
     assignment.remarque=req.body.remarque;
     console.log("POST assignment reçu :");
     console.log(assignment)
-    assignmentsData.push(assignment)
-    // assignment.save( (err) => {
-    //     if(err){
-    //         res.send('cant post assignment ', err);
-    //     }
-    //     res.json({ message: `${assignment.nom} saved!`})
-    // })
+
+    assignment.save( (err) => {
+        if(err){
+            res.send('cant post assignment ', err);
+        }
+        res.json({ message: `${assignment.nom} saved!`})
+    })
 }
 
 // Update d'un assignment (PUT)
@@ -69,10 +53,10 @@ function updateAssignment(req, res) {
             console.log(err);
             res.send(err)
         } else {
-            res.json({message: 'updated'})
+          res.json({message: 'updated'})
         }
 
-        // console.log('updated ', assignment)
+      // console.log('updated ', assignment)
     });
 
 }
@@ -81,7 +65,7 @@ function updateAssignment(req, res) {
 //     Assignment.aggregatePaginate(aggregateQuery,
 //       {
 //         page: parseInt(req.query.page) || 1,
-//         limit: parseInt(req.query.limit)|| 10,
+//         limit: parseInt(req.query.limit)|| 10,  
 //       },
 //       (err, assignments)=>{
 //         if(err){
@@ -93,20 +77,20 @@ function updateAssignment(req, res) {
 //       )
 //   }
 function getAssignmentsPaginate(req,res){
-    var aggregateQuery= Assignment.aggregate();
-    Assignment.aggregatePaginate(aggregateQuery,
-        {
+        var aggregateQuery= Assignment.aggregate();
+        Assignment.aggregatePaginate(aggregateQuery,
+          {
             page: parseInt(req.query.page) || 1,
-            limit: parseInt(req.query.limit)|| 10,
-        },
-        (err, assignments)=>{
+            limit: parseInt(req.query.limit)|| 10,  
+          },
+          (err, assignments)=>{
             if(err){
-                res.send(err);
+              res.send(err);
             }
             res.send(assignments);
-        }
-    )
-}
+          }
+          )
+      }
 
 // suppression d'un assignment (DELETE)
 function deleteAssignment(req, res) {
@@ -121,4 +105,4 @@ function deleteAssignment(req, res) {
 
 
 
-module.exports = {  postAssignment, getAssignment, updateAssignment, deleteAssignment, getAssignmentsPaginate, getAssignments };
+module.exports = {  postAssignment, getAssignment, updateAssignment, deleteAssignment, getAssignmentsPaginate };
