@@ -19,7 +19,8 @@ export class AssignmentsService {
  uri = "http://localhost:8010/api/assignments";
  //uri = "https://api-cours-angular-2023.herokuapp.com/api/assignments";
 
-  getAssignments():Observable<Assignment[]> {
+  getAssignments():Observable<any> {
+  console.log(this.http.get<Assignment[]>(this.uri))
     return this.http.get<Assignment[]>(this.uri)
 
     //return of(this.assignments);
@@ -42,11 +43,11 @@ export class AssignmentsService {
     return (error: any): Observable<T> => {
       console.log(error); // pour afficher dans la console
       console.log(operation + ' a échoué ' + error.message);
- 
+
       return of(result as T);
     }
  };
- 
+
   addAssignment(assignment:Assignment):Observable<any> {
     //this.assignments.push(assignment);
 
@@ -96,12 +97,13 @@ export class AssignmentsService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("page",page);
     queryParams = queryParams.append("limit",limit);
- 
+
     return this.http.get<any>(this.uri,{params:queryParams})
     .pipe( catchError(this.handleError<Assignment>(`getAssignment(page=${page}`)));
     // return this.http.get<any>(this.uri + "/"+ page+"/"+limit)
     // .pipe( catchError(this.handleError<Assignment>(`getAssignment(page=${page}`)));
   }
+
 
 }
 

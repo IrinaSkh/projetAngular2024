@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { AuthService } from './shared/auth.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import {AssignmentsService} from "./shared/assignments.service";
+import { MatDialog } from '@angular/material/dialog';
+import {LoginDialogComponent} from "./shared/components/login-dialog/login-dialog.component";
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +18,7 @@ export class AppComponent {
   identifiant: string;
   motdepasse: string;
 
-  constructor(public authService:AuthService, private router:Router,private assignmentsService: AssignmentsService) {}
+  constructor(public authService:AuthService, public router:Router,private assignmentsService: AssignmentsService,public dialog: MatDialog,) {}
 
   login() {
       this.authService.logIn(this.identifiant, this.motdepasse);
@@ -41,5 +45,9 @@ export class AppComponent {
       }
     )
   }
+  openLoginDialog() {
+    this.dialog.open(LoginDialogComponent);
+  }
+
 
 }

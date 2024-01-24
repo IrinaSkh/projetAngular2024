@@ -1,36 +1,43 @@
 <div class="container">
   <mat-card *ngIf="assignmentTransmis">
     <mat-card-header>
-      <p>Assignement n° {{assignmentTransmis.id}}</p>
-    </mat-card-header> 
-    <hr>
-    <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
-    <mat-card-subtitle>{{assignmentTransmis.dateDeRendu|date}}</mat-card-subtitle>
+      <div class="header-content">
+
+        <div>
+          <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
+          <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+        </div>
+      </div>
+    </mat-card-header>
     <hr>
     <mat-card-content>
-      <p>Matière : {{assignmentTransmis.matiere}}</p>
-      <p>Professeur :  {{assignmentTransmis.prof}}</p>
-      <p>Auteur : {{assignmentTransmis.auteur}}</p>
-      <p>Note : {{assignmentTransmis.note}}/20</p>
-      <p>Remarque : {{assignmentTransmis.remarque}}</p>
+      <div class="details">
+        <div class="detail">
+          <label>Matière:</label>
+          <select [(ngModel)]="assignmentTransmis.matiere">
+<!--            <option *ngFor="let matiere of matieres" [value]="matiere">{{matiere}}</option>-->
+          </select>
+        </div>
+        <div class="detail"><span>Professeur: {{assignmentTransmis.prof}}</span></div>
+        <div class="prof-photo">
+          <!--          <img [src]="assignmentTransmis.photoProf" alt="Photo du Professeur">-->
+        </div>
+        <div class="detail"><span>Auteur: {{assignmentTransmis.auteur}}</span></div>
+        <div class="detail"><span>Note: {{assignmentTransmis.note}}/20</span></div>
+        <div class="detail"><span>Remarque: {{assignmentTransmis.remarque}}</span></div>
+      </div>
     </mat-card-content>
-    <mat-checkbox *ngIf="!assignmentTransmis.rendu&&!isUser" (click)="onAssignmentRendu()">
-      Devoir rendu
+    <mat-checkbox *ngIf="!assignmentTransmis.rendu && !isUser" (click)="onAssignmentRendu()">
+      Devoir Rendu
     </mat-checkbox>
-
-    <div class="bottom">
-      <nav><a routerLink="/assignment/{{assignmentTransmis.id}}/edit">
-        <button mat-stroked-button
-                color="primary"
-                type="submit"
-                [disabled]="!isUser()"
-        >
-        EDIT
+    <div class="card-actions">
+      <button mat-stroked-button color="primary" [routerLink]="'/assignment/' + assignmentTransmis.id + '/edit'" [disabled]="!isUser()">
+        MODIFIER
       </button>
-       </a></nav>
       <button mat-flat-button color="warn" (click)="onDelete()" [disabled]="!isAdmin()">
-        DELETE
+        SUPPRIMER
       </button>
     </div>
   </mat-card>
 </div>
+

@@ -1,4 +1,5 @@
 <!-- navbar.component.html -->
+<main class="mainContainer">
 <mat-toolbar color="primary" class="fixed-toolbar">
   <button mat-icon-button (click)="toggleDrawer()">
     <mat-icon>menu</mat-icon>
@@ -46,10 +47,12 @@
   <mat-drawer position="start" #drawer mode="over">
     <mat-nav-list>
       <a mat-list-item routerLink="/liste-devoirs">Liste des devoirs</a>
-      <a mat-list-item routerLink="/add">Ajout d'un devoir</a>
+      <a mat-list-item (click)="authService.loggedIn ? router.navigate(['/add']) : openLoginDialog()">Ajout d'un devoir</a>
+      <!-- Répétez pour les autres liens -->
+
       <a mat-list-item routerLink="/edit">Modification d'un devoir</a>
-      <a mat-list-item routerLink="/suppression-devoir">Suppression d'un devoir</a>
-      <a mat-list-item (click)="peuplerDB()">Génération de données de test</a>
+
+      <a mat-list-item (click)="authService.loggedIn ? peuplerDB() : openLoginDialog()">Génération de données de test</a>
     </mat-nav-list>
   </mat-drawer>
   <div class="main-content">
@@ -58,3 +61,4 @@
 </router-outlet>
   </div>
 </mat-drawer-container>
+</main>

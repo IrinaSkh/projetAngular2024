@@ -13,7 +13,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./assignments.component.css'],
 })
 export class AssignmentsComponent implements OnInit {
-  titre = 'Mon application sur les assignments';
+
   assignments!: Assignment[];
 
   assignmentSelectionne!: Assignment;
@@ -38,9 +38,20 @@ export class AssignmentsComponent implements OnInit {
   displayedColumns: string[] = ['nom', 'dateRendu', 'matiere','rendu'];
 
   ngOnInit(): void {
-    this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
-      console.log(data.docs);
-      this.assignments=data.docs;
+    // this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
+    //   console.log(data.docs);
+    //   this.assignments=data.docs;
+    //   this.page=data.page;
+    //   this.limit=data.limit;
+    //   this.totalDocs=data.totalDocs;
+    //   this.hasPrevPage=data.hasPrevPage;
+    //   this.prevPage=data.prevPage;
+    //   this.hasNextPage=data.hasNextPage;
+    //   this.nextPage=data.nextPage;
+    // })
+    this.assignmentsService.getAssignments().subscribe(data=>{
+      console.log(data);
+      this.assignments=data;
       this.page=data.page;
       this.limit=data.limit;
       this.totalDocs=data.totalDocs;
@@ -48,7 +59,8 @@ export class AssignmentsComponent implements OnInit {
       this.prevPage=data.prevPage;
       this.hasNextPage=data.hasNextPage;
       this.nextPage=data.nextPage;
-    }) 
+      console.log("test de fonction")
+    })
   }
   getAssignmentsPaginated(page: number, limit: number){
       this.assignmentsService.getAssignmentPagine(page,limit).subscribe(data=>{
@@ -62,7 +74,7 @@ export class AssignmentsComponent implements OnInit {
       this.hasNextPage=data.hasNextPage;
       this.nextPage=data.nextPage;
     })
-    
+
   }
 
   peuplerDB(){

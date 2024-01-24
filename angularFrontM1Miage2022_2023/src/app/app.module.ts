@@ -33,6 +33,8 @@ import { AuthGuard } from './shared/auth.guard';
 import { AssignmentsPaginatorComponent } from './assignments/assignments.paginator/assignments.paginator.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
+import { LoginDialogComponent } from './shared/components/login-dialog/login-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const routes:Routes = [
   {path: '', component: AssignmentsComponent},
@@ -50,8 +52,10 @@ const routes:Routes = [
     AddAssignmentComponent,
     EditAssignmentComponent,
     AssignmentsPaginatorComponent,
+    LoginDialogComponent,
   ],
   imports: [
+    MatDialogModule,
     MatStepperModule,
     MatSidenavModule,
     BrowserModule,

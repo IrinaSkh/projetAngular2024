@@ -1,12 +1,12 @@
 <main class="container">
 
-  <div class="container2">
-    <a routerLink="/add">
-      <button mat-flat-button class="button">
-        Ajouter un Assignment
-      </button>
-    </a>
-  </div>
+<!--  <div class="container2">-->
+<!--    <a routerLink="/add">-->
+<!--      <button mat-flat-button class="button">-->
+<!--        Ajouter un Assignment-->
+<!--      </button>-->
+<!--    </a>-->
+<!--  </div>-->
 
 <div class="container3">
   <h1>Liste des Assignments :</h1>
@@ -42,11 +42,12 @@
 <tr (click)="onAssignmentClicke(row)"  mat-row *matRowDef="let row; columns: displayedColumns;">
 </tr>
 </table>
-<mat-paginator (page)="onPageChanged($event)" [length]="totalDocs"
-            [pageSize]="limit"
-            [pageSizeOptions]="[5, 10, 25, 100]"
-            aria-label="Select page">
-</mat-paginator>
 
-  
+<!--<mat-paginator (page)="onPageChanged($event)" [length]="totalDocs"-->
+<!--            [pageSize]="limit"-->
+<!--            [pageSizeOptions]="[5, 10, 25, 100]"-->
+<!--            aria-label="Select page">-->
+<!--</mat-paginator>-->
+
+
 </main>
