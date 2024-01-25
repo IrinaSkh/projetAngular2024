@@ -2,7 +2,7 @@
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -35,7 +35,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatStepperModule} from "@angular/material/stepper";
 import { LoginDialogComponent } from './shared/components/login-dialog/login-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 const routes:Routes = [
   {path: '', component: AssignmentsComponent},
   {path: 'home', component: AssignmentsComponent},
@@ -43,6 +44,7 @@ const routes:Routes = [
   {path: 'assignment/:id/edit', component: EditAssignmentComponent, canActivate: [AuthGuard], data: { roles: ['user','admin'] }},
   {path: 'assignment/:id', component: AssignmentsDetailsComponent},
 ]
+registerLocaleData(localeFr);
 @NgModule({
   declarations: [
 
@@ -70,7 +72,8 @@ const routes:Routes = [
     MatTableModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'fr-FR' } // Définit la locale à 'fr-FR'
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

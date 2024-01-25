@@ -1,5 +1,5 @@
 <!-- navbar.component.html -->
-<main class="mainContainer">
+
 <mat-toolbar color="primary" class="fixed-toolbar">
   <button mat-icon-button (click)="toggleDrawer()">
     <mat-icon>menu</mat-icon>
@@ -24,25 +24,7 @@
   <button (click)="logout()" *ngIf="authService.loggedIn" class="button2">Déconnexion</button>
 </mat-toolbar>
 
-<!--<div class="container">-->
-<!--  <button mat-button class="button" routerLink="/home">Home</button>-->
-<!--  <form (submit)="login()" *ngIf="!authService.loggedIn" class="form">-->
-<!--    <label>Identifiant:-->
-<!--      <input type="text" [(ngModel)]="identifiant" name="identifiant">-->
-<!--    </label>-->
-<!--    <label style="margin-left: 5px;">Mot de passe:-->
-<!--      <input type="password" [(ngModel)]="motdepasse" name="motdepasse">-->
-<!--    </label>-->
-<!--    <button type="submit" style="margin-left: 5px;">Connexion</button>-->
-<!--  </form>-->
-<!--  <p *ngIf="authService.loggedIn" class="text">Connecté en tant que {{authService.userName}} ({{authService.userRole}})</p>-->
-<!--  <button (click)="logout()" *ngIf="authService.loggedIn" class="button2">Déconnexion</button>-->
-<!--</div>-->
-<!--<div class="container2">-->
-<!--  <h1>-->
-<!--    <p>{{title}}</p>-->
-<!--  </h1>-->
-<!--</div>-->
+<main class="mainContainer">
 <mat-drawer-container>
   <mat-drawer position="start" #drawer mode="over">
     <mat-nav-list>
@@ -55,10 +37,14 @@
       <a mat-list-item (click)="authService.loggedIn ? peuplerDB() : openLoginDialog()">Génération de données de test</a>
     </mat-nav-list>
   </mat-drawer>
-  <div class="main-content">
-<router-outlet>
 
-</router-outlet>
-  </div>
+
+  <mat-drawer-content>
+    <router-outlet>
+
+    </router-outlet>
+
+  </mat-drawer-content>
+
 </mat-drawer-container>
 </main>
