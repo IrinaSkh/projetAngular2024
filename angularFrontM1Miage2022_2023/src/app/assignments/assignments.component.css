@@ -60,9 +60,9 @@
 /*!*  background-color: #f5f5f5;*!*/
 /*!*}*!*/
 
-/*!*.mat-paginator {*!*/
-/*!*  margin-top: 20px;*!*/
-/*!*}*!*/
+.mat-paginator {
+ margin-top: 20px;
+}
 
 /*!*.rendu-vert {*!*/
 /*!*  color: green;*!*/
