@@ -145,9 +145,9 @@
 /*}*/
 
 /*!* Styles pour le pagineur *!*/
-/*.mat-paginator {*/
-/*  margin-top: 20px;*/
-/*}*/
+.mat-paginator {
+  margin-top: 20px;
+}
 
 /*!* Styles pour les colonnes spécifiques *!*/
 /*.rendu-vert {*/
