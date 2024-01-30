@@ -4,20 +4,18 @@
       <div class="header-content">
 
         <div>
-          <mat-card-title>{{assignmentTransmis.nom}}</mat-card-title>
-          <mat-card-subtitle>{{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
+          <mat-card-title class="titreCard">{{assignmentTransmis.nom}}</mat-card-title>
+          <mat-card-subtitle class="subtitreCard">Date de rendu: {{assignmentTransmis.dateDeRendu | date}}</mat-card-subtitle>
         </div>
       </div>
     </mat-card-header>
-    <hr>
-    <mat-card-content>
+
+    <mat-card-content class="cardContent">
       <div class="details">
-        <div class="detail">
-          <label>Matière:</label>
-          <select [(ngModel)]="assignmentTransmis.matiere">
-<!--            <option *ngFor="let matiere of matieres" [value]="matiere">{{matiere}}</option>-->
-          </select>
-        </div>
+
+          <div class="detail"><span>Matière: {{assignmentTransmis.matiere}}</span></div>
+
+
         <div class="detail"><span>Professeur: {{assignmentTransmis.prof}}</span></div>
         <div class="prof-photo">
           <!--          <img [src]="assignmentTransmis.photoProf" alt="Photo du Professeur">-->

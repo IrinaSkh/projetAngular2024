@@ -3,6 +3,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
 import { MatStepperModule } from '@angular/material/stepper';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
@@ -20,7 +21,7 @@ export class AddAssignmentComponent implements OnInit {
   matiere:string;
   prof:string="";
   auteur:string;
-  constructor(private assignmentsService:AssignmentsService) {}
+  constructor(private assignmentsService:AssignmentsService,     private router:Router) {}
 
   ngOnInit(): void {
 
@@ -40,6 +41,7 @@ export class AddAssignmentComponent implements OnInit {
       .subscribe(reponse => {
         console.log(reponse.message);
       });
+    this.router.navigate(['/home']);
   }
   changeProf(event){
     //this.matiere=event.value;
@@ -49,7 +51,7 @@ export class AddAssignmentComponent implements OnInit {
   onStepOneSubmit() {
   }
   onStepTwoSubmit() {
-    // Logique pour la soumission de la deuxième étape
+
   }
 
   onStepThreeSubmit() {

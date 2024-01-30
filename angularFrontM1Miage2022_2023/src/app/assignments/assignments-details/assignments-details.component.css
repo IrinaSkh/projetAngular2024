@@ -3,12 +3,15 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  height: 100%;
+
 
 }
 
 mat-card {
-  width: 80%;
+  width: 60%;
   margin: 20px;
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   background: #f5f5f5;
@@ -26,56 +29,79 @@ mat-card:hover {
 
 mat-card-header {
 
-  color: white;
-  padding: 10px;
-  font-size: 18px;
-}
 
+  color: #ccdeff;
+  border-top-left-radius: 15px; /* Arrondir les bords en haut de la carte */
+  border-top-right-radius: 15px;
+}
+.titreCard{
+  font-size: 40px;
+
+}
+.subtitreCard{
+  margin: 10px;
+}
 .header-content {
   display: flex;
   align-items: center;
   text-align: center;
   font-weight: 900;
-  font-size: 30px;
+
   color: rgb(16, 137, 211);
 }
 
-.prof-photo img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  border: 3px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-}
+/*.prof-photo img {*/
+/*  width: 60px;*/
+/*  height: 60px;*/
+/*  border-radius: 50%;*/
+/*  margin-right: 15px;*/
+/*  border: 3px solid white;*/
+/*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);*/
+/*}*/
 
 mat-card-title {
-  font-size: 24px;
+  font-size: 100px;
+  color: #0056b3;
   margin-top: 5px;
 }
+
 
 mat-card-subtitle {
   font-size: 18px;
   color: #1565c0; /* Nuance de bleu plus foncée */
 }
 
-hr {
-  border-top: 1px solid #2196f3; /* Ligne horizontale bleue */
-  margin: 10px 0;
-}
+
 
 mat-card-content {
   font-size: 16px;
 }
 
-.details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
+  .details {
+    flex-direction: row;
+    align-content: stretch;
+    display: flex;
+
+    gap: 10px;
+  }
 
 .detail {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Espacement entre les détails */
+  display: inline-block; /* Pour permettre l'application de la marge */
+}
+
+.detail span {
+  background-color: #0d47a1; /* Bleu foncé pour le fond */
+  color: white; /* Texte en blanc */
+  padding: 5px 10px; /* Espacement autour du texte */
+  border-radius: 5px; /* Bords légèrement arrondis */
+  font-size: 1.1em; /* Taille de police légèrement augmentée */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.detail span:hover {
+  background-color: #1565c0; /* Changement de couleur au survol */
+  transform: scale(1.05); /* Effet de zoom léger au survol */
 }
 
 .detail label {
@@ -113,4 +139,8 @@ button:hover {
 
 mat-checkbox {
   margin: 20px 0;
+}
+.cardContent{
+  flex-direction: row;
+  align-content: stretch;
 }

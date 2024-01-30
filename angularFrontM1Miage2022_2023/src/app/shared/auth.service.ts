@@ -7,7 +7,7 @@ export class AuthService {
   loggedIn=false;
   public userRole: string;
   public userName: string;
-  private users = [    
+  private users = [
     { identifiant: 'Damien', motdepasse: 'mienda', role: 'user' },
     { identifiant: 'Irina', motdepasse: 'inair', role: 'user' },
     { identifiant: 'Admin', motdepasse: '1234', role: 'admin' },
@@ -16,7 +16,7 @@ export class AuthService {
 
   logIn(identifiant: string, motdepasse: string): Promise<string> {
     // Vérifiez les informations de connexion et définissez le rôle de l'utilisateur ici
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const user = this.users.find(u => u.identifiant === identifiant && u.motdepasse === motdepasse);
       if (user) {
         this.userRole = user.role;
@@ -24,7 +24,7 @@ export class AuthService {
         resolve(user.role);
         //this.loggedIn = true;
       } else {
-        resolve('');
+        reject('Identifiant ou mot de passe incorrect');
       }
     });
   }

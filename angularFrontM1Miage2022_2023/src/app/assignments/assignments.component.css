@@ -240,6 +240,7 @@ h1 {
 
 /* Styles pour la table */
 table {
+
   width: 66%; /* 2/3 de la largeur du container */
   max-height: 300px; /* Hauteur fixe pour la table */
   overflow-y: auto; /* Permettre le défilement vertical si nécessaire */

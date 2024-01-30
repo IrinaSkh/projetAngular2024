@@ -1,41 +1,6 @@
 
-<!--<div class="container">-->
-<!--  <mat-card>-->
-<!--    <mat-card-header>-->
-<!--      <p>Nouveau Assignement</p>-->
-<!--    </mat-card-header>-->
-<!--    <hr>-->
-<!--<form class="container2" ngForm (submit)="onSubmit(); assignmentForm.reset()" #assignmentForm>-->
-<!--  <mat-form-field>-->
-<!--    <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field appearance="fill">-->
-<!--    <mat-label>Matière du rendu</mat-label>-->
-<!--    <mat-select  [(ngModel)]="matiere">-->
-<!--      <mat-option *ngFor="let matiere of matiereRendu"  (selectionChange)="changeProf($event)" [value]="matiere" >-->
-<!--        {{matiere}}-->
-<!--      </mat-option>-->
-<!--    </mat-select>-->
-<!--  </mat-form-field>-->
-<!--  <mat-form-field  class="example-full-width">-->
-<!--    <mat-label>Professeur</mat-label>-->
-<!--    <input disabled="true" matInput placeholder="M. Buffa" [(ngModel)]="prof" value="{{prof}}">-->
-<!--  </mat-form-field>-->
-
-<!--  <mat-form-field appearance="fill">-->
-<!--    <input matInput [matDatepicker]="picker" placeholder="Date de rendu" [(ngModel)]="dateDeRendu" name="date" required>-->
-<!--    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--    <mat-datepicker #picker></mat-datepicker>-->
-<!--  </mat-form-field>-->
-
-<!--  <button mat-stroked-button>-->
-<!--    Ajouter un devoir-->
-<!--  </button>-->
-<!--</form>-->
-<!--</mat-card>-->
-<!--</div>-->
-
-<mat-stepper>
+<div class="container">
+<mat-stepper class="stepper">
   <mat-step label="Étape 1">
     <!-- Contenu de la première étape -->
     <form #stepOneForm="ngForm" (ngSubmit)="onStepOneSubmit()">
@@ -47,7 +12,7 @@
     </form>
   </mat-step>
   <!-- Étape 2 -->
-  <mat-step label="Étape 2">
+  <mat-step label="Étape 2: Matière">
     <!-- Contenu de la deuxième étape -->
     <form #stepTwoForm="ngForm" (ngSubmit)="onStepTwoSubmit()">
       <mat-form-field appearance="fill">
@@ -58,14 +23,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- Autres champs pour la deuxième étape -->
+      <div class="buttonContainer">
       <button mat-button matStepperPrevious>Étape précédente</button>
       <button mat-button matStepperNext>Étape suivante</button>
+      </div>
     </form>
   </mat-step>
 
   <!-- Étape 3 -->
-  <mat-step label="Étape 3">
+  <mat-step label="Étape 3: Date de rendu">
     <!-- Contenu de la troisième étape -->
     <form #stepThreeForm="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
@@ -73,9 +39,11 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <!-- Autres champs pour la troisième étape -->
+      <<div class="buttonContainer">
       <button mat-button matStepperPrevious>Étape précédente</button>
       <button mat-button matStepperNext>Envoyer le travail</button>
+    </div>
     </form>
   </mat-step>
 </mat-stepper>
+</div>

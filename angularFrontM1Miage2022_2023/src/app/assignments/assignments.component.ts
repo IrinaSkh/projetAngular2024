@@ -6,6 +6,7 @@ import { AssignmentsPaginatorComponent } from './assignments.paginator/assignmen
 import { PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import {LiveAnnouncer} from "@angular/cdk/a11y";
 
 @Component({
   selector: 'app-assignments',
@@ -26,8 +27,8 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage:boolean;
   nextPage:number;
   @ViewChild('tableAssignments') matTableAssignments: MatTable<Assignment>;
-
-  constructor(private assignmentsService: AssignmentsService, private router: Router) {
+  @ViewChild(MatSort) sort: MatSort;
+  constructor(private assignmentsService: AssignmentsService, private router: Router,private _liveAnnouncer: LiveAnnouncer) {
   }
 
   onAssignmentClicke(assignment: Assignment) {
@@ -36,7 +37,9 @@ export class AssignmentsComponent implements OnInit {
   }
 
   displayedColumns: string[] = ['nom', 'dateRendu', 'matiere','rendu'];
-
+  // ngAfterViewInit() {
+  //   this.assignments.sort = this.sort;
+  // }
   ngOnInit(): void {
     // this.assignmentsService.getAssignmentPagine(this.page, this.limit).subscribe(data=>{
     //   console.log(data.docs);
@@ -77,13 +80,7 @@ export class AssignmentsComponent implements OnInit {
 
   }
 
-  peuplerDB(){
-    this.assignmentsService.peuplerBDAvecForkJoin().subscribe(()=>{
-      console.log("La bd a été peuplée");
-      this.router.navigate(["/home"], {replaceUrl: true});
-    }
-    )
-  }
+
   onPageChanged($event:PageEvent){
 
     this.getAssignmentsPaginated($event.pageIndex, $event.pageSize);
@@ -92,17 +89,15 @@ export class AssignmentsComponent implements OnInit {
   // ngAfterViewInit() {
   //   this.matTableAssignments.dataSource= this.sort;
   // }
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      //this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      //this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
+  // /** Announce the change in sort state for assistive technology. */
+  // announceSortChange(sortState: Sort) {
+  //
+  //   if (sortState.direction) {
+  //     this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+  //   } else {
+  //     this._liveAnnouncer.announce('Sorting cleared');
+  //   }
+  // }
 
   search(value: string) {
     this.assignments = this.assignments.filter(
