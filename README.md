@@ -17,7 +17,7 @@ Ce projet est une application d'Assignments il contient :
 
 ## Démarrage
 
-Le projet est hebergé sur heroku : https://angularfront2023.herokuapp.com/
+Le projet est hebergé sur heroku : à ajouter
 
 Pour le démarrage du projet : 
 - Cloner le projet
@@ -37,7 +37,7 @@ Pour le démarrage du projet :
 ## Auteurs
 
 * **Irina Sukhorukova** _alias_ [@IrinaSkh](https://github.com/IrinaSkh)
-* **Damien Munoz** _alias_ [@damienmunoz](https://github.com/damienmunoz)
+* **Valentin Gomy** _alias_ [@damienmunoz](https://github.com/damienmunoz)
 
 
 
