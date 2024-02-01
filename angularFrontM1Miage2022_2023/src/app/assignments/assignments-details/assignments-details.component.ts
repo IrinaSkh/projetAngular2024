@@ -26,6 +26,7 @@ export class AssignmentsDetailsComponent implements OnInit {
   getAssignment() {
     const id = +this.route.snapshot.params['id'];
     this.assignmentService.getAssignment(id).subscribe((assignment) => {
+    console.log(assignment)
       this.assignmentTransmis = assignment;
     });
   }
@@ -40,6 +41,7 @@ export class AssignmentsDetailsComponent implements OnInit {
       .subscribe((message) => {
         console.log(message);
       });
+       alert("Le devoir a été marqué comme rendu.");
   }
 
   onDelete() {

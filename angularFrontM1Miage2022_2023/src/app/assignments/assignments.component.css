@@ -108,12 +108,12 @@
 /*}*/
 
 /*!* Styles pour les conteneurs flexibles *!*/
-/*.container2, .container3 {*/
+.container2, .container3 {
 
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  margin-bottom: 20px;*/
-/*}*/
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
 /*!* Styles pour la table *!*/
 /*table {*/

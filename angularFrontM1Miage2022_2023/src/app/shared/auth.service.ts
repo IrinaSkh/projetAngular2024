@@ -8,7 +8,7 @@ export class AuthService {
   public userRole: string;
   public userName: string;
   private users = [
-    { identifiant: 'Damien', motdepasse: 'mienda', role: 'user' },
+    { identifiant: 'Valentin', motdepasse: 'valentin', role: 'user' },
     { identifiant: 'Irina', motdepasse: 'inair', role: 'user' },
     { identifiant: 'Admin', motdepasse: '1234', role: 'admin' },
   ];
