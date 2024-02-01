@@ -10,14 +10,31 @@ Ce projet est une application d'Assignments il contient :
 - De nouvelles propriétés au modèle des Assignments
 - Une amélioration de l'affichage des Assignments
 - Un champ de recherche
-
+- Formulaire de type Stepper (formulaire en plusieurs étapes) pour l'ajout d'Assignments
+- Hébergement sur Heroku.com ou render.com
+- Interface userfriendly
+- Pagination
+- Gestion des routes
 ### Pré-requis
 
 - Navigateur Web
 
 ## Démarrage
 
-Le projet est hebergé sur heroku : à ajouter
+Le projet est hebergé sur heroku : https://angular-project2024.onrender.com
+
+Comptes de test:
+Admin: 
+login: admin 
+mdp: 1234
+
+User
+login: Irina
+mdp: inair
+
+User
+login: Valentin
+mdp: valentin
 
 Pour le démarrage du projet : 
 - Cloner le projet
@@ -37,7 +54,7 @@ Pour le démarrage du projet :
 ## Auteurs
 
 * **Irina Sukhorukova** _alias_ [@IrinaSkh](https://github.com/IrinaSkh)
-* **Valentin Gomy** _alias_ [@damienmunoz](https://github.com/damienmunoz)
+* **Valentin Gomy** _alias_ 
 
 
 
